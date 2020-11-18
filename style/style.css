@@ -29,8 +29,15 @@ body {
 /* Specific element classes */
 header {
     width: 100%;
-    height: 20vh;
+    height: 10vh;
     background: var(--primary);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+header i {
+    font-size: 2rem;
+    margin-right: 1rem;
+    color: var(--green-text);
 }
 
 h1 {
@@ -39,23 +46,24 @@ h1 {
 }
 
 main {
-    height: 80vh;
+    height: 90vh;
+    overflow: hidden;
 }
 
 /* Todo section */
 .todo-container {
-    width: 30vw;
+    width: 100%;
+    max-width: 25rem;
     height: 100%;
     background: var(--secondary);
     color: white;
 
     flex-direction: column;
-
     justify-content: space-around;
 }
 
 
-.time-day-date {
+.time-day {
     flex-direction: column;
     align-items: center;
 }
@@ -92,6 +100,7 @@ main {
     font-weight: bold;
     font-size: 1.4rem;
     margin: 1rem 0;
+    cursor: pointer;
 
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);   
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
@@ -101,6 +110,11 @@ main {
 .display-todo {
     flex-direction: column;
     align-items: center;
+}
+
+.display-todo h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
 
 .todo-item p {
@@ -114,7 +128,63 @@ main {
 
 /* Calender section */
 .calender-container {
-    width: 70vw;
+    width: 100%;
     height: 100%;
-    background: #33383b;
+    background: #b4b1ae;
+    
+    border: solid #b4b1ae 0.125rem ;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: .125rem;
+}
+
+
+.calender-nav {
+    grid-column: 1/8;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--green-text);
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);   
+}
+
+.month {
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 .3rem;
+}
+
+.month i {
+    cursor: pointer;
+}
+
+.month h3:hover, i:hover{
+    color: var(--secondary);
+}
+
+
+.day-of-the-week {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.5rem;
+}
+
+.calender-day {
+    color: #313335;
+    background: var(--primary);
+    flex-direction: column;
+    padding: .6rem;
+}
+
+.calender-day:hover {
+    background: var(--green-text);
+    color: white;
+}
+
+.calender-date {
+    text-align: end;
+}
+
+.inactive-day {
+    color: #b4b1ae;
 }
