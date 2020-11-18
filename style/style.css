@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* General classes */
+.flex {
+    display: flex;
+}
+
+.centered {
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    height: 10rem;
+    background: #F4F3F2 ;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #1BE1AE;
+}
