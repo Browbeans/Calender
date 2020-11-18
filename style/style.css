@@ -1,6 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+:root {
+    --primary: #F4F3F2;
+    --secondary: #7c4dff;
+    --green-text:  #1BE1AE;
+}
+
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
+    background: white;
 }
 
 /* General classes */
@@ -13,13 +26,95 @@ body {
     align-items: center;
 }
 
+/* Specific element classes */
 header {
     width: 100%;
-    height: 10rem;
-    background: #F4F3F2 ;
+    height: 20vh;
+    background: var(--primary);
 }
 
 h1 {
     font-size: 3rem;
-    color: #1BE1AE;
+    color: var(--green-text);
+}
+
+main {
+    height: 80vh;
+}
+
+/* Todo section */
+.todo-container {
+    width: 30vw;
+    height: 100%;
+    background: var(--secondary);
+    color: white;
+
+    flex-direction: column;
+
+    justify-content: space-around;
+}
+
+
+.time-day-date {
+    flex-direction: column;
+    align-items: center;
+}
+
+#time {
+    font-size: 3rem;
+}
+
+#weekday {
+    font-size: 2.5rem;
+}
+
+#date {
+    font-size: 2.5rem;
+    color: var(--green-text);
+}
+
+
+/* Add todo section */
+.add-todo {
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.8rem;
+}
+
+
+.add-todo button {
+    padding: 1rem 4rem;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    background: var(--green-text);
+    color: white;
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin: 1rem 0;
+
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);   
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Display todo section */
+.display-todo {
+    flex-direction: column;
+    align-items: center;
+}
+
+.todo-item p {
+    margin: 0 .5rem 0 .5rem;
+    font-size: 1.2rem;
+}
+
+.todo-time {
+    color: var(--green-text);
+}
+
+/* Calender section */
+.calender-container {
+    width: 70vw;
+    height: 100%;
+    background: #33383b;
 }
