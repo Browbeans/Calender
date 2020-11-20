@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="./style/style.css">
     <script src="./script/main.js"></script>
     <script src="./script/calendar.js"></script>
+    <script defer src="./script/modal.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
@@ -25,7 +26,7 @@
             </div>
             <div class="add-todo flex">
                 <h3>New todo...</h3>
-                <button id="todo-button">ADD</button>
+                <button id="todo-button" class="btn-style">ADD</button>
             </div>
             <div class="display-todo flex">
                 <h3>Todays todo</h3>
@@ -273,5 +274,14 @@
             </div>
        </div>
    </main>
+   <!--Popup- modal-->
+   <div class="modal-container">
+       <div class="modal-content flex centered">
+        <i class="fas fa-times-circle"></i>
+         <h3 class="modal-h3">Todo</h3>
+         <input type="text" id="todo-input">
+         <button class="btn-style" id="addTodo">Add Todo</button>
+       </div>
+</div>
 </body>
 </html>

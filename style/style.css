@@ -90,7 +90,7 @@ main {
 }
 
 
-.add-todo button {
+.btn-style {
     padding: 1rem 4rem;
     border-radius: 1rem;
     border: none;
@@ -104,7 +104,14 @@ main {
 
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);   
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    transition: all ease .5s;
 }
+/*.btn-style:hover {
+    background-color: #F4F3F2;
+    color: var(--green-text);
+    border: 3px solid var(--green-text)
+}
+*/
 
 /* Display todo section */
 .display-todo {
@@ -131,7 +138,6 @@ main {
     width: 100%;
     height: 100%;
     background: #b4b1ae;
-    
     border: solid #b4b1ae 0.125rem ;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -157,10 +163,14 @@ main {
 .month i {
     cursor: pointer;
 }
-
-.month h3:hover, i:hover{
+.month i:hover {
     color: var(--secondary);
 }
+
+.month h3:hover i:hover{
+    color: var(--secondary);
+}
+
 
 
 .day-of-the-week {
@@ -187,4 +197,64 @@ main {
 
 .inactive-day {
     color: #b4b1ae;
+}
+
+
+/*Modal container*/
+.modal-container{
+    
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 1;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-content{
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    background: var(--secondary);
+    color: white;
+    color: black;
+    width: 30rem;
+    height: 30rem;
+    border-radius: 1rem;
+    border: 5px solid var(--green-text);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);   
+}
+#todo-input {
+    margin: 1rem 0rem;
+    width: 17rem;
+    height: 3rem;
+    outline: none;
+    font-size: 1.2rem;
+    border: 3px solid var(--green-text);
+    border-radius: 2rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);   
+}
+.modal-h3{
+    font-size: 2.5rem;
+    color: var(--green-text);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+.fa-times-circle{
+    color:  #1BE1AE;
+    font-size: 2.2rem;
+    text-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);  
+    position: absolute;
+    margin: 0.7rem;
+    top: 0;
+    right: 0;
+    transition: all ease .5s;
+
+}
+.fa-times-circle:hover {
+    color:#F4F3F2;
 }
