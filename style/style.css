@@ -8,6 +8,7 @@
     --primary: #F4F3F2;
     --secondary: #7c4dff;
     --green-text:  #1BE1AE;
+    --empty-div: #c3c2c1;
 }
 
 body {
@@ -189,6 +190,14 @@ main {
 .calender-day:hover {
     background: var(--green-text);
     color: white;
+}
+
+.empty-day {
+    background: var(--empty-div);
+}
+
+.empty-day:hover {
+    background: var(--empty-div);
 }
 
 .calender-date {

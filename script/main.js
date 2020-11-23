@@ -3,7 +3,7 @@ window.onload = main;
 function main() {
     getDatesInMonth(getToday().getMonth(), getToday().getFullYear());
     getDaysInMonth();
-    renderDays(days);
+    renderGrid(days, dates);
 }
 
 function getToday(){
