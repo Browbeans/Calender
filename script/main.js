@@ -4,6 +4,8 @@ function main() {
     getDatesInMonth(getToday().getMonth(), getToday().getFullYear());
     getDaysInMonth();
     renderGrid(days, dates);
+    updateDigitalClock();
+    digitalClock();
 }
 
 function getToday(){
