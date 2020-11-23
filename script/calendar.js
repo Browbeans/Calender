@@ -40,7 +40,6 @@ function renderGrid(days, dates){
 
 
 function renderDays(days, parentClasses){
-  console.log(days);
   for (let i = 0; i < days.length; i++){
     let parent = createHTMLElement('div');
     let date = createHTMLElement('h3');
