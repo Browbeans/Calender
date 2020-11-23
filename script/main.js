@@ -6,6 +6,8 @@ function main() {
     renderGrid(days, dates);
     updateDigitalClock();
     digitalClock();
+    setDay()
+    fetchDate()
 }
 
 function getToday(){
