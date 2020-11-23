@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/style.css">
-    <script src="./script/main.js"></script>
+    <script defer src="./script/main.js"></script>
     <script defer src="./script/calendar.js"></script>
     <script defer src="./script/modal.js"></script>
     <script defer src="./script/time-date.js"></script>
@@ -75,8 +75,9 @@
        <div class="modal-content flex centered">
         <i class="fas fa-times-circle"></i>
          <h3 class="modal-h3">Todo</h3>
-         <input type="text" id="todo-input">
+         <input type="text" id="todo-input" placeholder="add todo...">
          <button class="btn-style" id="addTodo">Add Todo</button>
+         <div class="todoDiv"></div>
        </div>
 </div>
 </body>

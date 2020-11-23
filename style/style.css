@@ -240,10 +240,11 @@ main {
 }
 #todo-input {
     margin: 1rem 0rem;
+    padding: 0.4rem 1.4rem;
     width: 17rem;
     height: 3rem;
     outline: none;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     border: 3px solid var(--green-text);
     border-radius: 2rem;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);   
@@ -266,4 +267,10 @@ main {
 }
 .fa-times-circle:hover {
     color:#F4F3F2;
+}
+.paragraph{
+
+    color: white;
+    font-size: 1.4rem;
+
 }
