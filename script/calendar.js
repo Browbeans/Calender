@@ -1,13 +1,25 @@
 let dates = [];
 let days = [];
 let calendarContainer = document.getElementById("calendar-container");
+let previousMonthButton = document.getElementById("previous-month");
+let nextMonthButton = document.getElementById("next-month");
+
+previousMonthButton.addEventListener("click", () => {changeMonthIndex(1)})
+nextMonthButton.addEventListener("click", () => {changeMonthIndex(-1)})
+
 
 function getDatesInMonth(month, year) {
-  let date = new Date(year, month, 1);
+  let date = new Date(year, (month), 1);
   while (date.getMonth() === month) {
     dates.push(new Date(date));
     date.setDate(date.getDate() + 1);
   }
+}
+
+function getMonth() {
+  let month = dates[0].toLocaleString('default', {month: 'long'});
+  let monthElement = document.getElementById('current-month');
+  monthElement.innerHTML = month;
 }
 
 function getDaysInMonth() {
