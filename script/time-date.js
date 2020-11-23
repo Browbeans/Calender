@@ -9,8 +9,11 @@ function updateDigitalClock() {
 }
 
 function updateDigitalTime(getTime) {
-    const getHours = getTime.getHours();
-    const getMinutes = getTime.getMinutes();
+    let getHours = getTime.getHours();
+    let getMinutes = getTime.getMinutes();
+
+    getHours = formatDateValue(getHours);
+    getMinutes = formatDateValue(getMinutes);
 
     const clock = document.getElementById("time");
     clock.innerText = getHours + ":" + getMinutes;
@@ -18,7 +21,6 @@ function updateDigitalTime(getTime) {
 
 function fetchDay() {
     let date = getToday()
-    console.log(date.getDay())
 
     switch(date.getDay()){
         case 0: return 'Sunday'      
@@ -44,4 +46,12 @@ function fetchDate() {
     
     const todaysDate = document.getElementById('date');
     todaysDate.innerText = year + '-' + (month + 1) + '-' + day; 
+}
+
+// Adding a zero next to every number between 1 - 9.
+function formatDateValue(value) {
+    if (value < 10) {
+        return '0' + value;
+    }
+    return value;
 }
