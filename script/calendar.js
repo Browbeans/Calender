@@ -127,7 +127,7 @@ function setRedDay(){
   for (let i = 0; i < redDates.length; i++){
     for (let j = 0; j < dateElements.length; j++){
       if(dateElements[j].textContent === redDates[i]) {
-        dateElements[j].classList.add("todo-time");
+        dateElements[j].classList.add("red-holidays");
       }
     }
   }
