@@ -168,6 +168,10 @@ main {
     color: var(--secondary);
 }
 
+.month h3{
+    text-transform: capitalize;
+}
+
 .month h3:hover i:hover{
     color: var(--secondary);
 }

@@ -6,20 +6,42 @@ function main() {
     renderGrid(days, dates);
     updateDigitalClock();
     digitalClock();
-    setDay()
-    fetchDate()
+    setDay();
+    fetchDate();
     calenderDayClicked();
+    getMonth();
 }
 
 let selectedDate = null;
+let selectedMonth = null;
 
 function getToday(){
     let date = new Date();
     return date;
 }
 
-function calenderDayClicked() {
+function clearGrid(){
+    const parent = document.getElementById("calendar-container");
+    const calendarDays = document.querySelectorAll('.calender-day');
 
+    for(let i = 0; i < calendarDays.length; i++){
+        calendarDays[i].parentNode.removeChild(calendarDays[i]);
+    }
+
+    dates = [];
+    days = [];
+}
+
+function changeMonthIndex(monthChange) {
+    let date = dates[0];
+    clearGrid();
+    getDatesInMonth(date.getMonth() - monthChange, date.getFullYear());
+    getDaysInMonth();
+    renderGrid(days, dates);
+    getMonth();
+}
+
+function calenderDayClicked() {
     const calenderDay = document.querySelectorAll('.calender-day');
 
     for(let i = 0; i < calenderDay.length; i++){
@@ -44,8 +66,6 @@ function getSelectedDate(clickedDate){
 
     console.log(selectedDate);
 }
-
-
 
 // GENERATE CONTENT
 
