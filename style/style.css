@@ -9,6 +9,7 @@
     --secondary: #7c4dff;
     --green-text:  #1BE1AE;
     --empty-div: #c3c2c1;
+    --red-text:  #E75F5B;
 }
 
 body {
@@ -25,6 +26,11 @@ body {
 .centered {
     justify-content: center;
     align-items: center;
+}
+
+.red-holidays {
+    color: var(--red-text);
+    transition: all 200ms;
 }
 
 /* Specific element classes */
@@ -153,7 +159,8 @@ main {
     justify-content: space-between;
     background: var(--green-text);
     color: white;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);   
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);  
+    font-size: 2rem; 
 }
 
 .month {
