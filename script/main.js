@@ -35,6 +35,13 @@ function clearGrid(){
 function changeMonthIndex(monthChange) {
     let date = dates[0];
     clearGrid();
+
+    if(date.getMonth() - monthChange === 12){
+        getDatesInMonth(0, date.getFullYear() + 1);
+    } else if (date.getMonth() - monthChange === -1)  {
+        getDatesInMonth(11, date.getFullYear() - 1);
+    }
+    
     getDatesInMonth(date.getMonth() - monthChange, date.getFullYear());
     getDaysInMonth();
     renderGrid(days, dates);

@@ -176,8 +176,6 @@ main {
     color: var(--secondary);
 }
 
-
-
 .day-of-the-week {
     display: flex;
     justify-content: space-around;
