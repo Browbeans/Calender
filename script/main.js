@@ -1,23 +1,56 @@
 window.onload = main;
 
 function main() {
-    getDatesInMonth(getToday().getMonth(), getToday().getFullYear());
-    getDaysInMonth();
-    renderGrid(days, dates);
-    updateDigitalClock();
-    digitalClock();
-    setDay();
-    fetchDate();
-    calenderDayClicked();
-    getMonth();
+    initClock();
+    initSidebarDate();
+    initCalendar();
+    initCalendarDayClick();
 }
-
-let selectedDate = null;
-let selectedMonth = null;
 
 function getToday(){
     let date = new Date();
     return date;
+}
+
+// INIT FUNCTIONS
+
+function initClock(){
+    updateDigitalClock();
+    digitalClock();
+}
+
+function initSidebarDate(){
+    setDay();
+    fetchDate();
+}
+
+function initCalendar(){
+    getDatesInMonth(getToday().getMonth(), getToday().getFullYear());
+    getDaysInMonth();
+    renderGrid(days, dates);
+    getMonth();
+    setMonthIndex(0);
+}
+
+// CALENDAR LOGIC
+
+function setMonthIndex(monthChange) {
+    let date = dates[0];
+    clearGrid();
+    if(date.getMonth() - monthChange === 12){
+        fetchMonthHolidays(date.getFullYear() + 1, 0 + 1);
+        getDatesInMonth(0, date.getFullYear() + 1);
+    } else if (date.getMonth() - monthChange === -1)  {
+        fetchMonthHolidays(date.getFullYear() - 1, 11 + 1);
+        getDatesInMonth(11, date.getFullYear() - 1);
+    } else {
+        fetchMonthHolidays(date.getFullYear(), (date.getMonth() - monthChange + 1));
+        getDatesInMonth(date.getMonth() - monthChange, date.getFullYear());
+    }
+    
+    getDaysInMonth();
+    renderGrid(days, dates);
+    getMonth();
 }
 
 function clearGrid(){
@@ -30,25 +63,13 @@ function clearGrid(){
 
     dates = [];
     days = [];
+    holidays = [];
+    redDates = [];
 }
 
-function changeMonthIndex(monthChange) {
-    let date = dates[0];
-    clearGrid();
+//  SET CLICK ON CALENDAR DAYS
 
-    if(date.getMonth() - monthChange === 12){
-        getDatesInMonth(0, date.getFullYear() + 1);
-    } else if (date.getMonth() - monthChange === -1)  {
-        getDatesInMonth(11, date.getFullYear() - 1);
-    }
-    
-    getDatesInMonth(date.getMonth() - monthChange, date.getFullYear());
-    getDaysInMonth();
-    renderGrid(days, dates);
-    getMonth();
-}
-
-function calenderDayClicked() {
+function initCalendarDayClick() {
     const calenderDay = document.querySelectorAll('.calender-day');
 
     for(let i = 0; i < calenderDay.length; i++){
@@ -64,6 +85,9 @@ function calenderDayClicked() {
     }
 }
 
+
+let selectedDate = null;
+
 function getSelectedDate(clickedDate){
 
     day = dates[0].toString().split(" ");
@@ -74,7 +98,9 @@ function getSelectedDate(clickedDate){
     console.log(selectedDate);
 }
 
-// GENERATE CONTENT
+
+
+// GENERATE GENERIC HTML TAGS
 
 function createHTMLElement(tag){
     let element = document.createElement(tag);
