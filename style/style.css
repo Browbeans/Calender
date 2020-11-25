@@ -195,11 +195,19 @@ main {
     background: var(--primary);
     flex-direction: column;
     padding: .6rem;
+    justify-content: space-between;
 }
 
 .calender-day:hover {
     background: var(--green-text);
+    cursor: pointer;
     color: white;
+}
+
+
+
+.holiday {
+    font-size: .7rem;
 }
 
 .empty-day {

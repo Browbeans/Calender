@@ -111,13 +111,12 @@ function setEmptyCellsAmount(startingDay){
 
 // GETS RED DAYS OF CURRENT MONTH FROM API
 function getMonthRedDays(daysList){
-  console.log(daysList);
   let output = daysList.filter(day => day["röd dag"] === "Ja");
   for (let i = 0; i < output.length; i++){
     let date = output[i].datum.toString().split("-")[2];
     redDates.push(date);
   }
-  console.log(redDates);
+  
   setRedDay();
 }
 
@@ -133,5 +132,32 @@ function setRedDay(){
   }
 }
 
+function setHolidays() {
+  const dateElements = document.querySelectorAll(".calender-day");
+  for (let i = 0; i < holidays.length; i++){
+    for (let j = 0; j < dateElements.length; j++){
+      if(dateElements[j].textContent === holidays[i].date) {
+       let holidayElement =  createHTMLElement('p');
+        setHTMLContent(holidayElement, holidays[i].holiday)
+        setRedDayStructure(dateElements[j], holidayElement)
+        setHTMLClass(holidayElement, 'holiday')
+      }
+    }
+  }
+  
+}
 
+function setRedDayStructure(parent, child) {
+  parent.appendChild(child);
+}
+
+function getHolidays(dayslist) {
+  for(let i = 0; i < dayslist.length; i++){
+    if ('helgdag' in dayslist[i]) {
+      let date = dayslist[i].datum.toString().split("-")[2];
+      holidays.push({holiday: dayslist[i]['helgdag'], date:date}) 
+    }
+  }
+  setHolidays()
+}
 
