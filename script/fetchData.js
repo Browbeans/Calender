@@ -4,6 +4,7 @@ async function fetchMonthHolidays(year, month) {
         const result = await fetch(url);
         const data = await result.json();
         getMonthRedDays(data.dagar);
+        getHolidays(data.dagar)
     } catch (error) {
         console.error(error);
     }
