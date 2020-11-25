@@ -17,9 +17,10 @@ function getDatesInMonth(month, year) {
 }
 
 function getMonth() {
+  let year = dates[0].getFullYear();
   let month = dates[0].toLocaleString('default', {month: 'long'});
   let monthElement = document.getElementById('current-month');
-  monthElement.innerHTML = month;
+  monthElement.innerHTML = month +  ' ' +  year;
 }
 
 function getDaysInMonth() {
