@@ -76,28 +76,36 @@ function initCalendarDayClick() {
     
         calenderDay[i].onclick = function(e){
             checkClickedElement(e.target);
-            oldDate = e.target;
+            if (oldDate != null && e.target.textContent === oldDate.textContent) {
+                oldDate = null;
+            } else {
+                oldDate = e.target;
+            }
         }
     }
 }
 
 // CHECKS IF CLICKED ON CALENDAR DAY CONTAINER OR CHILD OF CONTAINER
 function checkClickedElement(target) {
-    if(target.classList.contains('calender-day')){ // container clicked
 
+    if(target.classList.contains('calender-day')){ // container clicked
         getSelectedDate(target.childNodes[0].textContent);
         target.classList.add('active-calendar-day');
-        if(oldDate != null) oldDate.classList.remove('active-calendar-day');
+        removeClassFromCalendarDate(target);
 
     } else if(target.classList.contains('calender-date')){ // child clicked
-
         getSelectedDate(target.textContent);
         target.parentNode.classList.add('active-calendar-day');
-        if(oldDate != null) oldDate.parentNode.classList.add('active-calendar-day');
-        
+        removeClassFromCalendarDate(target);
     }
+
 }
 
+// REMOVE ACTIVE CLASS FROM CALENDAR DAY
+function removeClassFromCalendarDate() {
+    if(oldDate != null) oldDate.classList.remove('active-calendar-day');
+    if(oldDate != null) oldDate.parentNode.classList.remove('active-calendar-day');
+}
 
 let selectedDate = null;
 
