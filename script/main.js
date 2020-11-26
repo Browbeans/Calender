@@ -69,32 +69,45 @@ function clearGrid(){
 }
 
 //  SET CLICK ON CALENDAR DAYS
-
+let oldDate = null;
 function initCalendarDayClick() {
     const calenderDay = document.querySelectorAll('.calender-day');
-
     for(let i = 0; i < calenderDay.length; i++){
     
         calenderDay[i].onclick = function(e){
-        
-            if(e.target.classList.contains('calender-day')){
-                getSelectedDate(e.target.childNodes[0].textContent);
-            } else if(e.target.classList.contains('calender-date')){
-                getSelectedDate(e.target.textContent);
-            }
+            checkClickedElement(e.target);
+            oldDate = e.target;
         }
+    }
+}
+
+// CHECKS IF CLICKED ON CALENDAR DAY CONTAINER OR CHILD OF CONTAINER
+function checkClickedElement(target) {
+    if(target.classList.contains('calender-day')){ // container clicked
+
+        getSelectedDate(target.childNodes[0].textContent);
+        target.classList.add('active-calendar-day');
+        if(oldDate != null) oldDate.classList.remove('active-calendar-day');
+
+    } else if(target.classList.contains('calender-date')){ // child clicked
+
+        getSelectedDate(target.textContent);
+        target.parentNode.classList.add('active-calendar-day');
+        if(oldDate != null) oldDate.parentNode.classList.add('active-calendar-day');
+        
     }
 }
 
 
 let selectedDate = null;
 
+// GET DATE OF CLICKED CALENDAR DAY
 function getSelectedDate(clickedDate){
     day = dates[0].toString().split(" ");
     selectedDate = new Date(day[3],setStringMonthToNum(day[1]),clickedDate,00,00,00);
-    console.log(selectedDate);
 }
 
+// CONVERTS STRING MONTH TO NUMBER
 function setStringMonthToNum(stringMonth){
     switch(stringMonth) {
         case 'Jan':

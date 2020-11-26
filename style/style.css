@@ -8,6 +8,8 @@
     --primary: #F4F3F2;
     --secondary: #7c4dff;
     --green-text:  #1BE1AE;
+    --green-hover:  #1be1af67;
+    --green-active:  #1BE1AE;
     --empty-div: #c3c2c1;
     --red-text:  #E75F5B;
 }
@@ -31,6 +33,10 @@ body {
 .red-holidays {
     color: var(--red-text);
     transition: all 200ms;
+}
+
+.active-calendar-day{
+    background: var(--green-text)!important;
 }
 
 /* Specific element classes */
@@ -199,7 +205,7 @@ main {
 }
 
 .calender-day:hover {
-    background: var(--green-text);
+    background: var(--green-hover);
     cursor: pointer;
     color: white;
 }
