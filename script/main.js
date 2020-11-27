@@ -126,19 +126,32 @@ function setTodosInCalenderDay(day, parent){
     for(let i = 0; i < allTodos.length; i++){
         let getDate = getFullDate(day).toString();
         let todoDate = allTodos[i].date.toString();
-        let paragraph = createHTMLElement('p');
-        parent.appendChild(paragraph);
-
-        if(todoDate === getDate){
-            setHTMLContent(paragraph, `todos: ${countTodos(getDate)}`);
+        let hasClass = false;
+        
+        for(let i = 0; i < parent.childNodes.length; i++){
+            if(parent.childNodes[i].classList.contains('todo-content')){
+                hasClass = true;
+            }
         }
-    }
+        
+        if(todoDate === getDate) {
+            if(hasClass) {
+               
+            }else {
+                let paragraph = createHTMLElement('p');
+                parent.appendChild(paragraph);
+                setHTMLContent(paragraph, `todos: ${countTodos(getDate)}`);
+                setHTMLClass(paragraph, 'todo-content')
+            }   
+        }
+    }    
 }
 
 function countTodos(getDate){
     let arr = allTodos.filter(todo => todo.date.toString() === getDate);
     return arr.length;
 }
+
 
 
 function getFullDate(day){
@@ -192,7 +205,7 @@ function setHTMLContent(element, content){
     element.innerHTML = content;
 }
 
-function setHTMLClass(element, classes){
+function setHTMLClass(element, classes) {
     if (Array.isArray(classes)) element.classList.add(...classes)
     else element.classList.add(classes)
 }
