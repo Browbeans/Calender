@@ -5,7 +5,8 @@ const addBtn = document.getElementById('todo-button');
 const addTodo = document.getElementById('addTodo')
 const modalExit = document.querySelector('.fa-times-circle');
 const input = document.getElementById('todo-input');
-const todoDiv = document.querySelector('.todoDiv');
+const todoDiv = document.querySelector('.todo-container');
+const todoItem = document.querySelector('.todo-item');
 
 addBtn.addEventListener('click', () => {
 
@@ -24,7 +25,7 @@ modalExit.addEventListener('click', () => {
 addTodo.addEventListener('click', () => {
 
     const paragraph = document.createElement('p');
-    todoDiv.appendChild(paragraph);
+    todoItem.appendChild(paragraph);
     paragraph.innerHTML = input.value;
     paragraph.classList.add('paragraph')
     allTodos.push({
@@ -33,9 +34,12 @@ addTodo.addEventListener('click', () => {
     });
 
     input.value = '';
-    console.log(allTodos);
+    
+    checkTodoCurrentDay(allTodos);
+    setMonthIndex(0); 
+    
+    
 })
 
 const allTodos = [];
-
 

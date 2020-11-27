@@ -71,6 +71,7 @@ function renderDays(days, parentClasses){
     setHTMLClass(date, "calender-date");
 
     setDayHTMLStructure(parent, date);
+    setTodosInCalenderDay(days[i], parent);
   }
 }
 
