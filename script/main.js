@@ -123,30 +123,21 @@ function checkTodoCurrentDay(allTodos){
 }
 
 function setTodosInCalenderDay(day, parent){  
-
     for(let i = 0; i < allTodos.length; i++){
-
         let getDate = getFullDate(day).toString();
         let todoDate = allTodos[i].date.toString();
+        let paragraph = createHTMLElement('p');
+        parent.appendChild(paragraph);
 
         if(todoDate === getDate){
-            let paragraph = createHTMLElement('p');
-            parent.appendChild(paragraph);
-            setHTMLContent(paragraph, countTodos(`todos: ${countTodos(todoDate)}`));
-            console.log(todoDate);
+            setHTMLContent(paragraph, `todos: ${countTodos(getDate)}`);
         }
     }
 }
 
-let todoArrays = [];
-
-function countTodos(todoDate){
-
-    let todoContent = todoDate;
-    todoArrays.push(todoContent);
-
-    console.log(todoArrays.length);
-    return todoArrays.length;
+function countTodos(getDate){
+    let arr = allTodos.filter(todo => todo.date.toString() === getDate);
+    return arr.length;
 }
 
 
