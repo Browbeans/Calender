@@ -39,6 +39,10 @@ body {
     background: var(--green-text)!important;
 }
 
+.todo-content {
+    color: black;
+}
+
 /* Specific element classes */
 header {
     width: 100%;
