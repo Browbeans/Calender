@@ -113,6 +113,49 @@ let selectedDate = null;
 function getSelectedDate(clickedDate){
     day = dates[0].toString().split(" ");
     selectedDate = new Date(day[3],setStringMonthToNum(day[1]),clickedDate,00,00,00);
+    
+}
+
+function checkTodoCurrentDay(allTodos){
+
+    let currentTodos = allTodos.filter(todo => todo.date === selectedDate);
+    
+}
+
+function setTodosInCalenderDay(day, parent){  
+
+    for(let i = 0; i < allTodos.length; i++){
+
+        let getDate = getFullDate(day).toString();
+        let todoDate = allTodos[i].date.toString();
+
+        if(todoDate === getDate){
+            let paragraph = createHTMLElement('p');
+            parent.appendChild(paragraph);
+            setHTMLContent(paragraph, countTodos(`todos: ${countTodos(todoDate)}`));
+            console.log(todoDate);
+        }
+    }
+}
+
+let todoArrays = [];
+
+function countTodos(todoDate){
+
+    let todoContent = todoDate;
+    todoArrays.push(todoContent);
+
+    console.log(todoArrays.length);
+    return todoArrays.length;
+}
+
+
+function getFullDate(day){
+
+    const date = dates[0].toString().split(" ");
+    return new Date(date[3],setStringMonthToNum(date[1]),day,00,00,00);
+
+
 }
 
 // CONVERTS STRING MONTH TO NUMBER
