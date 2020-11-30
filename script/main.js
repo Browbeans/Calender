@@ -136,13 +136,14 @@ function setTodosInCalenderDay(day, parent){
         
         if(todoDate === getDate) {
             if(hasClass) {
-               
+                
             }else {
                 let paragraph = createHTMLElement('p');
                 parent.appendChild(paragraph);
                 setHTMLContent(paragraph, `todos: ${countTodos(getDate)}`);
-                setHTMLClass(paragraph, 'todo-content')
-            }   
+                setHTMLClass(paragraph, 'todo-content');
+            }
+            
         }
     }    
 }
@@ -153,12 +154,10 @@ function countTodos(getDate){
 }
 
 
-
 function getFullDate(day){
 
     const date = dates[0].toString().split(" ");
     return new Date(date[3],setStringMonthToNum(date[1]),day,00,00,00);
-
 
 }
 
@@ -199,6 +198,7 @@ function setStringMonthToNum(stringMonth){
 function createHTMLElement(tag){
     let element = document.createElement(tag);
     return element
+    
 }
 
 function setHTMLContent(element, content){

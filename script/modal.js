@@ -24,10 +24,19 @@ modalExit.addEventListener('click', () => {
  */
 addTodo.addEventListener('click', () => {
 
+    //adding todo paragraph
     const paragraph = document.createElement('p');
     todoItem.appendChild(paragraph);
     paragraph.innerHTML = input.value;
     paragraph.classList.add('paragraph')
+
+    //adding delete button
+    const deleteTodo = document.createElement('i');
+    todoItem.appendChild(deleteTodo);
+    deleteTodo.innerHTML = '<i class="fas fa-trash-alt"></i>';
+    deleteTodo.classList.add('deleteBtn');
+    removeTodo(todoItem, deleteTodo);
+
     allTodos.push({
         activity: input.value,
         date: selectedDate
@@ -38,8 +47,18 @@ addTodo.addEventListener('click', () => {
     checkTodoCurrentDay(allTodos);
     setMonthIndex(0); 
     
-    
 })
 
-const allTodos = [];
+let allTodos = [];
+
+//Removes todo
+function removeTodo(todoItem, deleteBtn){
+
+    deleteBtn.addEventListener('click', () => {
+
+        todoItem.remove();    
+        allTodos = [];
+        setMonthIndex(0);
+    })
+}
 
