@@ -31,6 +31,7 @@ function initCalendar(){
     getMonth();
     getLocalStorage();
     setMonthIndex(0);
+    showAllTodos();
 }
 
 // CALENDAR LOGIC
@@ -54,6 +55,7 @@ function setMonthIndex(monthChange) {
     getMonth();
     initCalendarDayClick();
     setLocalStorage();
+    
 }
 
 function clearGrid(){
@@ -89,7 +91,6 @@ function initCalendarDayClick() {
 
 // CHECKS IF CLICKED ON CALENDAR DAY CONTAINER OR CHILD OF CONTAINER
 function checkClickedElement(target) {
-
     if(target.classList.contains('calender-day')){ // container clicked
         getSelectedDate(target.childNodes[0].textContent);
         target.classList.add('active-calendar-day');
@@ -100,7 +101,18 @@ function checkClickedElement(target) {
         target.parentNode.classList.add('active-calendar-day');
         removeClassFromCalendarDate(target);
     }
-
+    let elements = document.querySelectorAll(".calender-day");
+    let hasActiveDay = false;
+    for (let i = 0; i < elements.length; i++){
+        if(elements[i].classList.contains('active-calendar-day')){
+            hasActiveDay = true;
+        }
+    }
+    if(!hasActiveDay){
+        selectedDate = null;
+        todoItem.innerHTML = ''
+        showAllTodos();
+    }
 }
 
 // REMOVE ACTIVE CLASS FROM CALENDAR DAY
@@ -108,6 +120,7 @@ function removeClassFromCalendarDate() {
     if(oldDate != null && oldDate.parentNode != null){
         oldDate.classList.remove('active-calendar-day');
         oldDate.parentNode.classList.remove('active-calendar-day');
+
     }
 }
 
@@ -117,11 +130,10 @@ let selectedDate = null;
 function getSelectedDate(clickedDate){
     day = dates[0].toString().split(" ");
     selectedDate = new Date(day[3],setStringMonthToNum(day[1]),clickedDate,00,00,00);
-    checkTodos(selectedDate)
+    checkTodos(selectedDate);
 }
 
-
-
+// SETS TODOS IN CALENDAR DAYS
 function setTodosInCalenderDay(day, parent){
 
     for(let i = 0; i < allTodos.length; i++){
@@ -148,6 +160,7 @@ function setTodosInCalenderDay(day, parent){
     }    
 }
 
+// COUNT THE AMOUNT OF TODOS IN EACH DAY
 function countTodos(getDate){
     let arr = allTodos.filter(todo => todo.date.toString() === getDate);
     return arr.length;
@@ -161,8 +174,9 @@ function getFullDate(day){
 
 }
 
+// CHECK TODOS FOR SPECIFIC DATE
 function checkTodos(selectedDate) {
-    todoItem.innerHTML = ''
+    if (todoItem != null) todoItem.innerHTML = '';
     let newArray = [];
     for(let i = 0; i < allTodos.length; i++){
     
@@ -176,7 +190,6 @@ function checkTodos(selectedDate) {
     
 }
 
-
 function createTodoContent(newArray) {
     for(let i = 0; i < newArray.length; i++) {
         let paragraph = createHTMLElement('p')
@@ -184,6 +197,42 @@ function createTodoContent(newArray) {
         setHTMLContent(paragraph, newArray[i].activity)
     }
     
+}
+
+// GET ALL UNIQUE DATES OF TODOS
+function getUniqueDates(){
+    return uniqueDates = [...new Set(allTodos.map(item => item.date))];
+}
+
+// CREATES ARRAYS OF TODOS BASED ON DATE
+function createTodoArrays(){
+    let dates = getUniqueDates();
+    let datesArr = [];
+    for (let i = 0; i < dates.length; i++){
+        let o = allTodos.filter(d => d.date === dates[i]);
+        datesArr.push(o);
+    }
+    return datesArr;
+}
+
+// IF NOT SELECTED DATE IN CALENDAR SHOW ALL DATES
+function showAllTodos(){
+    let datesArr = createTodoArrays(); 
+    for(let i = 0; i < datesArr.length; i++) {
+
+        let date = createHTMLElement('p');
+        todoItem.appendChild(date);
+        let d = datesArr[i][0].date.split(" ");
+        let shortDate = `${d[0]} ${d[1]} ${d[2]} ${d[3]}`
+        setHTMLContent(date, shortDate);
+        setHTMLClass(date, 'todo-date-title');
+
+        for (let j = 0; j < datesArr[i].length; j++){
+            let paragraph = createHTMLElement('p')
+            todoItem.appendChild(paragraph);
+            setHTMLContent(paragraph, datesArr[i][j].activity);
+        }
+    }
 }
 
 // CONVERTS STRING MONTH TO NUMBER
