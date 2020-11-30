@@ -73,6 +73,7 @@ function renderDays(days, parentClasses){
     setDayHTMLStructure(parent, date);
     setTodosInCalenderDay(days[i], parent);
   }
+
 }
 
 // RENDERS EMPTY DAYS IN CALENDAR
