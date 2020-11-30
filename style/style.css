@@ -150,6 +150,11 @@ main {
     color: var(--green-text);
 }
 
+.todo-date-title{
+    text-decoration: underline;
+    padding-bottom: 0.5rem;
+}
+
 /* Calender section */
 .calender-container {
     width: 100%;
