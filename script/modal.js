@@ -35,7 +35,6 @@ addTodo.addEventListener('click', () => {
 
     input.value = '';
     
-    checkTodoCurrentDay(allTodos);
     setMonthIndex(0); 
     
     
