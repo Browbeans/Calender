@@ -1,0 +1,69 @@
+/* === MEDIA QUERIES === */
+
+@media (max-width: 75rem) {
+    .todo-container {
+        max-width: 15rem;
+    }
+
+    .day-of-the-week {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 62rem) {
+    #time {
+        font-size: 2.5rem;
+    }
+
+    #weekday {
+        font-size: 2rem;
+    }
+
+    #date {
+        font-size: 2rem;
+    }
+
+    .add-todo h3 {
+        font-size: 1.5rem;
+    }
+
+    .btn-style {
+        padding: 0.7rem 2.5rem;
+        font-size: 1rem;
+    }
+
+    .calender-nav {
+        font-size: 1.5rem;
+    }
+
+    .day-of-the-week .full {
+        display: none;
+    }
+
+    .day-of-the-week .half {
+        display: block;
+    }
+
+    .calender-date {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 48rem) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .calender-container {
+        display: none;
+    }
+
+    .todo-container {
+        max-width: 100%;
+    }
+
+    .btn-style {
+        padding: 1rem 3rem;
+        font-size: 1.2rem;
+    }
+}
