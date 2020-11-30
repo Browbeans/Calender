@@ -192,9 +192,17 @@ function checkTodos(selectedDate) {
 
 function createTodoContent(newArray) {
     for(let i = 0; i < newArray.length; i++) {
+
         let paragraph = createHTMLElement('p')
         todoItem.appendChild(paragraph)
-        setHTMLContent(paragraph, newArray[i].activity)
+        //deleteTodo in calender
+        const deleteTodo = document.createElement('i');
+        todoItem.appendChild(deleteTodo);
+        deleteTodo.innerHTML = '<i class="fas fa-trash-alt"></i>';
+        deleteTodo.classList.add('deleteBtn');
+        //calls remove todo function
+        removeTodo(todoItem, deleteTodo);
+        setHTMLContent(paragraph, newArray[i].activity);
     }
     
 }
@@ -264,8 +272,6 @@ function setStringMonthToNum(stringMonth){
           return 11
       }
 }
-
-
 
 // GENERATE GENERIC HTML TAGS
 
