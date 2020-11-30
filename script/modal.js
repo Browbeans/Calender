@@ -39,15 +39,11 @@ addTodo.addEventListener('click', () => {
 
     allTodos.push({
         activity: input.value,
-        date: selectedDate
+        date: selectedDate.toString()
     });
-
     input.value = '';
     
-    checkTodoCurrentDay(allTodos);
-    setMonthIndex(0); 
-    
-})
+
 
 let allTodos = [];
 

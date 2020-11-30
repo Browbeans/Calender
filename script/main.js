@@ -29,6 +29,7 @@ function initCalendar(){
     getDaysInMonth();
     renderGrid(days, dates);
     getMonth();
+    getLocalStorage();
     setMonthIndex(0);
 }
 
@@ -52,6 +53,7 @@ function setMonthIndex(monthChange) {
     renderGrid(days, dates);
     getMonth();
     initCalendarDayClick();
+    setLocalStorage();
 }
 
 function clearGrid(){
@@ -122,7 +124,7 @@ function checkTodoCurrentDay(allTodos){
     
 }
 
-function setTodosInCalenderDay(day, parent){  
+function setTodosInCalenderDay(day, parent){
     for(let i = 0; i < allTodos.length; i++){
         let getDate = getFullDate(day).toString();
         let todoDate = allTodos[i].date.toString();
@@ -135,15 +137,14 @@ function setTodosInCalenderDay(day, parent){
         }
         
         if(todoDate === getDate) {
-            if(hasClass) {
-                
-            }else {
+
+            if(!hasClass) {
                 let paragraph = createHTMLElement('p');
                 parent.appendChild(paragraph);
                 setHTMLContent(paragraph, `todos: ${countTodos(getDate)}`);
-                setHTMLClass(paragraph, 'todo-content');
+                setHTMLClass(paragraph, 'todo-content')
             }
-            
+
         }
     }    
 }
