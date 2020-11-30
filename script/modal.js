@@ -30,15 +30,12 @@ addTodo.addEventListener('click', () => {
     paragraph.classList.add('paragraph')
     allTodos.push({
         activity: input.value,
-        date: selectedDate
+        date: selectedDate.toString()
     });
-
     input.value = '';
     
-    checkTodoCurrentDay(allTodos);
-    setMonthIndex(0); 
-    
-    
+    // checkTodoCurrentDay(allTodos);
+    setMonthIndex(0);
 })
 
 const allTodos = [];
