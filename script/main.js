@@ -105,8 +105,10 @@ function checkClickedElement(target) {
 
 // REMOVE ACTIVE CLASS FROM CALENDAR DAY
 function removeClassFromCalendarDate() {
-    if(oldDate != null) oldDate.classList.remove('active-calendar-day');
-    if(oldDate != null) oldDate.parentNode.classList.remove('active-calendar-day');
+    if(oldDate != null && oldDate.parentNode != null){
+        oldDate.classList.remove('active-calendar-day');
+        oldDate.parentNode.classList.remove('active-calendar-day');
+    }
 }
 
 let selectedDate = null;
@@ -115,16 +117,13 @@ let selectedDate = null;
 function getSelectedDate(clickedDate){
     day = dates[0].toString().split(" ");
     selectedDate = new Date(day[3],setStringMonthToNum(day[1]),clickedDate,00,00,00);
-    
+    checkTodos(selectedDate)
 }
 
-function checkTodoCurrentDay(allTodos){
 
-    let currentTodos = allTodos.filter(todo => todo.date === selectedDate);
-    
-}
 
 function setTodosInCalenderDay(day, parent){
+
     for(let i = 0; i < allTodos.length; i++){
         let getDate = getFullDate(day).toString();
         let todoDate = allTodos[i].date.toString();
@@ -160,6 +159,31 @@ function getFullDate(day){
     const date = dates[0].toString().split(" ");
     return new Date(date[3],setStringMonthToNum(date[1]),day,00,00,00);
 
+}
+
+function checkTodos(selectedDate) {
+    todoItem.innerHTML = ''
+    let newArray = [];
+    for(let i = 0; i < allTodos.length; i++){
+    
+    if(selectedDate.toString() == allTodos[i].date.toString()) {
+        newArray.push(allTodos[i])    
+    }   
+    } 
+    if(newArray.length > 0) {
+        createTodoContent(newArray)
+    }
+    
+}
+
+
+function createTodoContent(newArray) {
+    for(let i = 0; i < newArray.length; i++) {
+        let paragraph = createHTMLElement('p')
+        todoItem.appendChild(paragraph)
+        setHTMLContent(paragraph, newArray[i].activity)
+    }
+    
 }
 
 // CONVERTS STRING MONTH TO NUMBER

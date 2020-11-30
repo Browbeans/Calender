@@ -44,6 +44,12 @@ addTodo.addEventListener('click', () => {
     input.value = '';
     
 
+    setMonthIndex(0); 
+    
+    
+})
+
+
 
 let allTodos = [];
 
