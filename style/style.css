@@ -195,9 +195,17 @@ main {
 }
 
 .day-of-the-week {
-    display: flex;
-    justify-content: space-around;
-    font-size: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    font-size: 1.2rem;
+}
+
+.day-of-the-week span {
+    text-align: center;
+}
+
+.half {
+    display: none;
 }
 
 .calender-day {
