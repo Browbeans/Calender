@@ -8,11 +8,16 @@ const todoItemsContainer = document.querySelector('.todo-item-container');
 const deleteButton = document.querySelector('.deleteBtn');
 const dateInput = document.getElementById('date-input');
 const inputContainer = document.getElementById('input-container');
+
 window.addEventListener('resize', () => {
+
     const width = 768
     if(window.innerWidth < width) {
         addBtn.classList.remove('inactive-button')
         addBtn.classList.add('active-button')
+        addBtn.addEventListener('click', () => {
+            modalContainer.style.display = 'block';
+    });
     } else {
         addBtn.classList.remove('active-button')
         addBtn.classList.add('inactive-button')
@@ -24,7 +29,6 @@ function addTodoClick(selectedDate) {
         addBtn.classList.remove('inactive-button')
         addBtn.classList.add('active-button')
         addBtn.addEventListener('click', () => {
-            console.log('true')
             modalContainer.style.display = 'block';
     });
     }
