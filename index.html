@@ -33,18 +33,6 @@
                 <button id="todo-button" class="inactive-button">ADD</button>
             </div>
             <div class="display-todo todo-item-container flex">
-                
-
-                <!-- <div class="todo-item flex">
-
-                    <p class="activity"></p>
-                </div>
-                <div class="todo-item flex">
-                    <p class="activity"></p>
-                </div>
-                <div class="todo-item flex">
-                    <p class="activity"></p>
-                </div> -->
             </div>
        </div>
        
@@ -72,25 +60,29 @@
                     <span class="half">Sun</span>
                </div>
            </div>
-            <!-- <div class="calender-day flex">
-                <h3 class="calender-date">1</h3>
-                <p class="todo-number">To do: 5</p>
-                <p class="flagday">Flaggdag</p>
-            </div> -->
        </div>
    </main>
    <!--Popup- modal-->
    <div class="modal-container">
        <div class="modal-content flex centered">
-        <div id="input-container" class="">
-            <p>Select Date</p>
-            <input id="date-input" type="date" id="start" name="trip-start" value="">   
+            <div id="input-container" class="">
+                <p>Select Date</p>
+                <input id="date-input" type="date" id="start" name="trip-start" value="">   
+            </div>
+            <i class="fas fa-times-circle"></i>
+            <h3 class="modal-h3">Todo</h3>
+            <input type="text" id="todo-input">
+            <button class="btn-style" id="addTodo">Add Todo</button>
         </div>
-        <i class="fas fa-times-circle"></i>
-         <h3 class="modal-h3">Todo</h3>
-         <input type="text" id="todo-input">
-         <button class="btn-style" id="addTodo">Add Todo</button>
-       </div>
-</div>
+    </div>
+        <!--Edit modal -->
+    <div class="edit-modal-container">
+        <div class="edit-modal-content flex centered">
+            <i id="edit-close" class="fas fa-times-circle"></i>
+            <h3 class="modal-h3">Todo</h3>
+            <input type="text" id="edit-todo-input">
+            <button class="btn-style" id="edit-todo">Edit Todo</button>
+        </div>
+    </div>
 </body>
 </html>

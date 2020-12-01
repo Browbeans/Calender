@@ -284,7 +284,7 @@ main {
 
 
 /*Modal container*/
-.modal-container{
+.modal-container, .edit-modal-container{
     
     position: fixed;
     width: 100%;
@@ -296,7 +296,7 @@ main {
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
 }
-.modal-content{
+.modal-content, .edit-modal-content{
     flex-direction: column;
     top: 50%;
     left: 50%;
@@ -312,7 +312,7 @@ main {
     border: 5px solid var(--green-text);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);   
 }
-#todo-input {
+#todo-input, #edit-todo-input {
     margin: 1rem 0rem;
     padding: 0.4rem 1.4rem;
     width: 17rem;

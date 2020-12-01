@@ -9,6 +9,11 @@ const deleteButton = document.querySelector('.deleteBtn');
 const dateInput = document.getElementById('date-input');
 const inputContainer = document.getElementById('input-container');
 
+const editModalContainer = document.querySelector('.edit-modal-container');
+const editButton = document.getElementById('edit-todo');
+const editTodoInput = document.getElementById('edit-todo-input');
+const editClose = document.getElementById('edit-close');
+
 window.addEventListener('resize', () => {
 
     const width = 768
@@ -39,8 +44,11 @@ function addTodoClick(selectedDate) {
 }
 
 modalExit.addEventListener('click', () => {
-
     modalContainer.style.display = 'none';
+});
+
+editClose.addEventListener('click', () => {
+    editModalContainer.style.display = 'none';
 });
 
 /**
@@ -63,9 +71,9 @@ addTodo.addEventListener('click', () => {
     container.appendChild(changeTodo);
     changeTodo.innerHTML = '<i class="fas fa-pen"></i>';
     changeTodo.classList.add('changeTodo');
-
-    //change todo
-    addChangeTodo(paragraph, changeTodo);
+    changeTodo.onclick = function(e){
+        openEditModal(e);
+    }
 
     //delete button
     const deleteTodo = document.createElement('i');
@@ -119,35 +127,34 @@ function keepActiveDay(){
         }
     }
 }
-//option to change a todo
-function addChangeTodo(paragraph, changeTodo){
-
-    changeTodo.addEventListener('click', (event)=> {
-       
-        modalContainer.style.display = 'block';
-        
-        
-        let activity = event.target.parentElement.parentElement.childNodes[0].textContent;
-        paragraph.innerHTML = input.value;
-         for(let i = 0; i < allTodos.length; i++){
-            
-            if(allTodos[i].date.toString() === selectedDate.toString() && allTodos[i].activity === activity){
-                //allTodos.replace(paragraph, input.value);
-                allTodos.splice(1, i);
-                allTodos.splice(i, 1);
-                console.log(allTodos)
-            }
-         }
-         event.target.parentElement.parentElement.parentElement.removeChild(event.target.parentElement.parentElement);
-        
-        setMonthIndex(0);
-
-    })
-
-}
 
 dateInput.addEventListener("change", () => {
     const date = dateInput.value.toString().split("-");
     selectedDate = new Date(Number(date[0]), Number(date[1]) - 1, Number(date[2]), 00, 00, 00);
 });
+
+function openEditModal(event) {
+    editModalContainer.style.display = 'block';
+    let activity = event.target.parentElement.parentElement.childNodes[0].textContent;
+
+    // change html text value on input change
+    editTodoInput.addEventListener("input", () => {
+        event.target.parentElement.parentElement.childNodes[0].textContent = editTodoInput.value;
+    })
+
+    // set new value to object in allTodos array
+    editButton.addEventListener('click', () => {
+        for(let i = 0; i < allTodos.length; i++){
+        
+            if(allTodos[i].date.toString() === selectedDate.toString() && allTodos[i].activity === activity){
+                allTodos[i].activity = editTodoInput.value;
+            }
+         }
+         editModalContainer.style.display = 'none';
+         editTodoInput.value = '';
+    })
+
+    setMonthIndex(0);
+}
+
 

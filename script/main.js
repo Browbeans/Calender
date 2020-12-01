@@ -204,6 +204,14 @@ function createTodoContent(newArray) {
         paragraph.classList.add('paragraph');
         setHTMLContent(paragraph, newArray[i].activity);
 
+        const changeTodo = document.createElement('i');
+        container.appendChild(changeTodo);
+        changeTodo.innerHTML = '<i class="fas fa-pen"></i>';
+        changeTodo.classList.add('changeTodo');
+        changeTodo.onclick = function(e){
+            openEditModal(e);
+        }
+
         //deleteTodo in calender
         const deleteTodo = document.createElement('i');
         container.appendChild(deleteTodo);
@@ -211,14 +219,9 @@ function createTodoContent(newArray) {
         deleteTodo.classList.add('deleteBtn');
 
         removeTodo(deleteTodo);
-
-        const changeTodo = document.createElement('i');
-        container.appendChild(changeTodo);
-        changeTodo.innerHTML = '<i class="fas fa-pen"></i>';
-        changeTodo.classList.add('changeTodo');
         container.classList.add('todoDiv');
 
-        addChangeTodo(paragraph, changeTodo)
+        // addChangeTodo(paragraph, changeTodo)
     }
     
 }
