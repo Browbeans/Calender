@@ -5,3 +5,7 @@ Ett projekt där vi skapade en kalender som visar tid och datum. Det finns även
 När den går till mobilt läge försvinner kalendern. 
 
 Petter Fogel, Oliver Johansson, Andreas Stanggren och Hampus Olausson
+
+Github pages: https://hampusjohnolausson.github.io/Calender/
+
+Github repository:https://github.com/HampusJohnOlausson/Calender
