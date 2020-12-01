@@ -4,7 +4,9 @@ const addTodo = document.getElementById('addTodo')
 const modalExit = document.querySelector('.fa-times-circle');
 const input = document.getElementById('todo-input');
 const todoDiv = document.querySelector('.todo-container');
-const todoItem = document.querySelector('.todo-item');
+const todoItemsContainer = document.querySelector('.todo-item-container');
+const deleteButton = document.querySelector('.deleteBtn');
+
 
 addBtn.addEventListener('click', () => {
 
@@ -24,17 +26,19 @@ addTodo.addEventListener('click', () => {
 
     //adding todo paragraph
     const paragraph = document.createElement('p');
-    todoItem.appendChild(paragraph);
+    const container = document.createElement('div');
+    todoItemsContainer.appendChild(container);
+    container.appendChild(paragraph);
     paragraph.innerHTML = input.value;
-    paragraph.classList.add('paragraph')
+    paragraph.classList.add('paragraph');
 
     //delete button
     const deleteTodo = document.createElement('i');
-    todoItem.appendChild(deleteTodo);
+    container.appendChild(deleteTodo);
     deleteTodo.innerHTML = '<i class="fas fa-trash-alt"></i>';
     deleteTodo.classList.add('deleteBtn');
-    //calling deletetodo function
-    removeTodo(todoItem, deleteTodo);
+
+    removeTodo(deleteTodo);
 
     allTodos.push({
         activity: input.value,
@@ -42,32 +46,37 @@ addTodo.addEventListener('click', () => {
     });
 
     input.value = '';
-    
-    setMonthIndex(0); 
+    setMonthIndex(0);
+    keepActiveDay();
 })
 
 let allTodos = [];
 
-//removes a todo from the date
-function removeTodo(deleteBtn){
-
-    deleteBtn.addEventListener('click', (event) => {
-
-        let deletedTodo;
-
+function removeTodo (deleteTodo) {
+    deleteTodo.onclick = function(event){
+        let activity = event.target.parentElement.parentElement.childNodes[0].textContent;
          for(let i = 0; i < allTodos.length; i++){
 
-            deletedTodo = allTodos.filter(todoItem => allTodos[i].date === todoItem.date && allTodos[i].activity === todoItem.activity);
-            //deletedTodo.remove();    
-            
+            if(allTodos[i].date.toString() === selectedDate.toString() && allTodos[i].activity === activity){
+                allTodos.splice(i, 1);
+            }
          }
- 
-        allTodos.splice(deletedTodo);
-        setMonthIndex(0);
-        console.log(event.target);
-        console.log(selectedDate);
+         event.target.parentElement.parentElement.parentElement.removeChild(event.target.parentElement.parentElement);
         
-       
-    })
+        setMonthIndex(0);
+    }
+}
+
+function keepActiveDay(){
+    let elements = document.querySelectorAll('.calender-day');
+    let date = selectedDate.toString().split(' ')[2];
+    let el;
+    for (let i = 0; i < elements.length; i++){
+        if(elements[i].childNodes.length !== 0 && elements[i].childNodes[0].textContent === date) {
+            console.log("TRÄFF");
+            elements[i].classList.add('active-calendar-day');
+            console.log(elements[i]);
+        }
+    }
 }
 

@@ -91,6 +91,7 @@ function initCalendarDayClick() {
 
 // CHECKS IF CLICKED ON CALENDAR DAY CONTAINER OR CHILD OF CONTAINER
 function checkClickedElement(target) {
+    console.log(target);
     if(target.classList.contains('calender-day')){ // container clicked
         getSelectedDate(target.childNodes[0].textContent);
         target.classList.add('active-calendar-day');
@@ -110,7 +111,7 @@ function checkClickedElement(target) {
     }
     if(!hasActiveDay){
         selectedDate = null;
-        todoItem.innerHTML = ''
+        todoItemsContainer.innerHTML = ''
         showAllTodos();
     }
 }
@@ -176,7 +177,7 @@ function getFullDate(day){
 
 // CHECK TODOS FOR SPECIFIC DATE
 function checkTodos(selectedDate) {
-    if (todoItem != null) todoItem.innerHTML = '';
+    if (todoItemsContainer != null) todoItemsContainer.innerHTML = '';
     let newArray = [];
     for(let i = 0; i < allTodos.length; i++){
     
@@ -190,19 +191,24 @@ function checkTodos(selectedDate) {
     
 }
 
+// creates TODO LIST when clicked on calendar date
 function createTodoContent(newArray) {
     for(let i = 0; i < newArray.length; i++) {
 
-        let paragraph = createHTMLElement('p')
-        todoItem.appendChild(paragraph)
+        const paragraph = document.createElement('p');
+        const container = document.createElement('div');
+        todoItemsContainer.appendChild(container);
+        container.appendChild(paragraph);
+        paragraph.classList.add('paragraph');
+        setHTMLContent(paragraph, newArray[i].activity);
+
         //deleteTodo in calender
         const deleteTodo = document.createElement('i');
-        todoItem.appendChild(deleteTodo);
+        container.appendChild(deleteTodo);
         deleteTodo.innerHTML = '<i class="fas fa-trash-alt"></i>';
         deleteTodo.classList.add('deleteBtn');
-        //calls remove todo function
-        removeTodo(todoItem, deleteTodo);
-        setHTMLContent(paragraph, newArray[i].activity);
+
+        removeTodo(deleteTodo);
     }
     
 }
@@ -229,7 +235,7 @@ function showAllTodos(){
     for(let i = 0; i < datesArr.length; i++) {
 
         let date = createHTMLElement('p');
-        todoItem.appendChild(date);
+        todoItemsContainer.appendChild(date);
         let d = datesArr[i][0].date.split(" ");
         let shortDate = `${d[0]} ${d[1]} ${d[2]} ${d[3]}`
         setHTMLContent(date, shortDate);
@@ -237,7 +243,7 @@ function showAllTodos(){
 
         for (let j = 0; j < datesArr[i].length; j++){
             let paragraph = createHTMLElement('p')
-            todoItem.appendChild(paragraph);
+            todoItemsContainer.appendChild(paragraph);
             setHTMLContent(paragraph, datesArr[i][j].activity);
         }
     }
