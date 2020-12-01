@@ -6,6 +6,8 @@ const input = document.getElementById('todo-input');
 const todoDiv = document.querySelector('.todo-container');
 const todoItemsContainer = document.querySelector('.todo-item-container');
 const deleteButton = document.querySelector('.deleteBtn');
+const dateInput = document.getElementById('date-input');
+const inputContainer = document.getElementById('input-container');
 
 
 addBtn.addEventListener('click', () => {
@@ -23,6 +25,7 @@ modalExit.addEventListener('click', () => {
  * Adding todo
  */
 addTodo.addEventListener('click', () => {
+    let style = getComputedStyle(inputContainer);
 
     //adding todo paragraph
     const paragraph = document.createElement('p');
@@ -46,8 +49,15 @@ addTodo.addEventListener('click', () => {
     });
 
     input.value = '';
-    setMonthIndex(0);
-    keepActiveDay();
+    
+    if (style.display === 'block'){
+        setMonthIndex(0);
+        if (todoItemsContainer != null) todoItemsContainer.innerHTML = '';
+        showAllTodos();
+    } else {
+        setMonthIndex(0);
+        keepActiveDay();
+    }
 })
 
 let allTodos = [];
@@ -73,10 +83,13 @@ function keepActiveDay(){
     let el;
     for (let i = 0; i < elements.length; i++){
         if(elements[i].childNodes.length !== 0 && elements[i].childNodes[0].textContent === date) {
-            console.log("TRÄFF");
             elements[i].classList.add('active-calendar-day');
-            console.log(elements[i]);
         }
     }
 }
+
+dateInput.addEventListener("change", () => {
+    const date = dateInput.value.toString().split("-");
+    selectedDate = new Date(Number(date[0]), Number(date[1]) - 1, Number(date[2]), 00, 00, 00);
+});
 
