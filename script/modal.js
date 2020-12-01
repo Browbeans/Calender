@@ -98,7 +98,7 @@ function removeTodo (deleteTodo) {
     deleteTodo.onclick = function(event){
         let activity = event.target.parentElement.parentElement.childNodes[0].textContent;
          for(let i = 0; i < allTodos.length; i++){
-
+            
             if(allTodos[i].date.toString() === selectedDate.toString() && allTodos[i].activity === activity){
                 allTodos.splice(i, 1);
             }
@@ -123,24 +123,24 @@ function keepActiveDay(){
 function addChangeTodo(paragraph, changeTodo){
 
     changeTodo.addEventListener('click', (event)=> {
-
+       
         modalContainer.style.display = 'block';
-        paragraph.innerHTML = input.value;
+        
         
         let activity = event.target.parentElement.parentElement.childNodes[0].textContent;
-
+        paragraph.innerHTML = input.value;
          for(let i = 0; i < allTodos.length; i++){
-
+            
             if(allTodos[i].date.toString() === selectedDate.toString() && allTodos[i].activity === activity){
                 //allTodos.replace(paragraph, input.value);
-                allTodos.splice(1, i, input.value);
-                
+                allTodos.splice(1, i);
+                allTodos.splice(i, 1);
+                console.log(allTodos)
             }
          }
          event.target.parentElement.parentElement.parentElement.removeChild(event.target.parentElement.parentElement);
         
         setMonthIndex(0);
-        console.log(allTodos);
 
     })
 
