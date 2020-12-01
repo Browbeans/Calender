@@ -114,6 +114,8 @@ function checkClickedElement(target) {
         todoItemsContainer.innerHTML = ''
         showAllTodos();
     }
+
+    addTodoClick(selectedDate)  
 }
 
 // REMOVE ACTIVE CLASS FROM CALENDAR DAY
