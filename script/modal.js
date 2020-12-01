@@ -10,11 +10,20 @@ const dateInput = document.getElementById('date-input');
 const inputContainer = document.getElementById('input-container');
 
 
-addBtn.addEventListener('click', () => {
-
-    modalContainer.style.display = 'block';
-
-});
+function addTodoClick(selectedDate) { 
+    if(selectedDate != null){   
+        addBtn.classList.remove('inactive-button')
+        addBtn.classList.add('active-button')
+        addBtn.addEventListener('click', () => {
+            console.log('true')
+            modalContainer.style.display = 'block';
+    });
+    }
+    if(selectedDate === null) {
+        addBtn.classList.remove('active-button')
+        addBtn.classList.add('inactive-button')
+    }
+}
 
 modalExit.addEventListener('click', () => {
 

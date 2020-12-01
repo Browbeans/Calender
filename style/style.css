@@ -43,6 +43,38 @@ body {
     color: black;
 }
 
+.inactive-button {
+    background: gray;
+    padding: 1rem 4rem;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin: 1rem 0;
+    pointer-events:none;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);   
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    transition: all ease .5s;
+}
+
+.active-button {
+    background: var(--green-active);
+    padding: 1rem 4rem;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin: 1rem 0;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);   
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    transition: all ease .5s;
+}
+
 /* Specific element classes */
 header {
     width: 100%;
