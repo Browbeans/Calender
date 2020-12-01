@@ -91,7 +91,7 @@ function initCalendarDayClick() {
 
 // CHECKS IF CLICKED ON CALENDAR DAY CONTAINER OR CHILD OF CONTAINER
 function checkClickedElement(target) {
-    console.log(target);
+    
     if(target.classList.contains('calender-day')){ // container clicked
         getSelectedDate(target.childNodes[0].textContent);
         target.classList.add('active-calendar-day');
@@ -211,6 +211,14 @@ function createTodoContent(newArray) {
         deleteTodo.classList.add('deleteBtn');
 
         removeTodo(deleteTodo);
+
+        const changeTodo = document.createElement('i');
+        container.appendChild(changeTodo);
+        changeTodo.innerHTML = '<i class="fas fa-pen"></i>';
+        changeTodo.classList.add('changeTodo');
+        container.classList.add('todoDiv');
+
+        addChangeTodo(paragraph, changeTodo)
     }
     
 }
