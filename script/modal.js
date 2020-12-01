@@ -31,6 +31,16 @@ addTodo.addEventListener('click', () => {
     container.appendChild(paragraph);
     paragraph.innerHTML = input.value;
     paragraph.classList.add('paragraph');
+    container.classList.add('todoDiv');
+
+    //change todo icon
+    const changeTodo = document.createElement('i');
+    container.appendChild(changeTodo);
+    changeTodo.innerHTML = '<i class="fas fa-pen"></i>';
+    changeTodo.classList.add('changeTodo');
+
+    //change todo
+    addChangeTodo(paragraph, changeTodo);
 
     //delete button
     const deleteTodo = document.createElement('i');
@@ -79,4 +89,33 @@ function keepActiveDay(){
         }
     }
 }
+//option to change a todo
+function addChangeTodo(paragraph, changeTodo){
 
+    changeTodo.addEventListener('click', (event)=> {
+
+        modalContainer.style.display = 'block';
+        paragraph.innerHTML = input.value;
+        
+        let activity = event.target.parentElement.parentElement.childNodes[0].textContent;
+
+         for(let i = 0; i < allTodos.length; i++){
+
+            if(allTodos[i].date.toString() === selectedDate.toString() && allTodos[i].activity === activity){
+                //allTodos.replace(paragraph, input.value);
+                allTodos.splice(1, i, input.value);
+                
+            }
+         }
+         event.target.parentElement.parentElement.parentElement.removeChild(event.target.parentElement.parentElement);
+        
+        setMonthIndex(0);
+        console.log(allTodos);
+
+    })
+
+}
+
+//localStorage.clear()
+
+//localStorage.clear();

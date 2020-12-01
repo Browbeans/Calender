@@ -315,10 +315,30 @@ main {
     font-size: 1.4rem;
 
 }
+.changeTodo{
+    font-size: 1.2rem;
+    margin: 0rem 1rem;
+    color: #F4F3F2;
+    transition: all ease .5s;
+    cursor: pointer;
+}
+.changeTodo:hover{
+    color: var(--green-text);
+
+}
 .deleteBtn{
     font-size: 1.2rem;
     transition: all ease .5s;
     cursor: pointer;
+}
+.todoDiv{
+    margin: 0.5rem 0rem;
+    display: flex;
+    flex-direction: row;
+    border: 3px solid var(--green-text);
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);  
 }
 .deleteBtn:hover{
     color: var(--red-text);
